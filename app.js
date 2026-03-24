@@ -166,7 +166,8 @@ const App = (() => {
   // ── Data fetching ─────────────────────────────────────────────────────────
   async function fetchStock(si) {
     try {
-      const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(si.t)}?interval=1d&range=6mo`;
+      #const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(si.t)}?interval=1d&range=6mo`;
+      const url = `https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(si.t)}?interval=1d&range=6mo`;
       const res = await fetch(url);
       if (!res.ok) return;
       const json = await res.json();
