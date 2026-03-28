@@ -9,18 +9,13 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.static(path.join(__dirname)));
 
-// Serve index.html for root and any other routes (SPA fallback)
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
 // Health check endpoint
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', message: 'MarketLens server is running!' });
 });
 
-// Fallback for undefined routes
-app.get('*', (req, res) => {
+// Serve index.html for all other routes (SPA fallback)
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
