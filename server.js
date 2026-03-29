@@ -23,7 +23,8 @@ app.get('/api/chart/:ticker', async (req, res) => {
     const ticker = req.params.ticker;
     try {
         // Alpha Vantage API - Real data, free tier
-        const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${encodeURIComponent(ticker)}&outputsize=full&apikey=${ALPHA_VANTAGE_KEY}`;
+        //const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${encodeURIComponent(ticker)}&outputsize=full&apikey=${ALPHA_VANTAGE_KEY}`;
+        const url = `/api/chart/${encodeURIComponent(si.t)}`; 
         
         const response = await fetch(url);
         const data = await response.json();
